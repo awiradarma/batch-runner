@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="sampleJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+	<step id="firstStep">
+		<chunk item-count="10" skip-limit="100">
+			<reader ref="andre.batch.sample.MyReader">
+			</reader>
+			<processor ref="andre.batch.sample.MyProcessor"/>
+			<writer ref="andre.batch.sample.MyWriter"/>
+			<skippable-exception-classes>
+				<include class="java.lang.IllegalStateException"/>
+			</skippable-exception-classes>
+		</chunk>
+		<partition>
+			<plan partitions="2"/>
+		</partition>
+	</step>
+</job>
